@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import se331.rest.entity.Doctor;
 import se331.rest.repository.DoctorRepository;
 
+import java.util.Optional;
+
 
 @Profile("db")
 @Repository
@@ -34,5 +36,10 @@ public class DoctorDaoImpl implements DoctorDao{
     @Override
     public Doctor save(Doctor doctor){
         return doctorRepository.save(doctor);
+    }
+
+    @Override
+    public Optional<Doctor> findByID(Long id){
+        return doctorRepository.findById(id);
     }
 }

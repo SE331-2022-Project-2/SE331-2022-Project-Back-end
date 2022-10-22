@@ -26,4 +26,7 @@ public class People {
     @OneToMany(mappedBy = "patient")
     @Builder.Default
     List<Vaccine> hasVaccines = new ArrayList<>();
+
+    @ElementCollection
+    List<String> imageUrls;
 }

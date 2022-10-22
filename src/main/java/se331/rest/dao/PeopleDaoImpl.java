@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import se331.rest.entity.People;
 import se331.rest.repository.PeopleRepository;
 
+import java.util.Optional;
+
 @Profile("db")
 @Repository
 public class PeopleDaoImpl implements PeopleDao{
@@ -34,4 +36,8 @@ public class PeopleDaoImpl implements PeopleDao{
         return peopleRepository.save(people);
     }
 
+    @Override
+    public Optional<People> findByID(Long id){
+        return peopleRepository.findById(id);
+    }
 }

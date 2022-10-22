@@ -20,4 +20,5 @@ public class PeopleDTO {
     String hometown;
     String comment;
     List<VaccineDTO> hasVaccines;
+    List<String> imageUrls;
 }

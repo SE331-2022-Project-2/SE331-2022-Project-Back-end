@@ -4,6 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import se331.rest.entity.People;
 
+import java.util.Optional;
+
 public interface PeopleDao {
     Integer getPeopleSize();
     Page<People> getPeoples(Integer pageSize, Integer page);
@@ -11,4 +13,5 @@ public interface PeopleDao {
 
     People save(People people);
     //Page<People> getPeoples(String name, Pageable page);
+    Optional<People> findByID(Long id);
 }

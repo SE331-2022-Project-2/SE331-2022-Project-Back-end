@@ -8,4 +8,5 @@ import java.util.List;
 public interface VaccineService {
     List<Vaccine> getAllVaccine();
     Page<Vaccine> getVaccine(Integer page, Integer pageSize);
+    Vaccine save(Vaccine vaccine);
 }

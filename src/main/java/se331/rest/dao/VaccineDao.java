@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface VaccineDao {
     Page<Vaccine> getVaccine(Pageable pageRequest);
     Optional<Vaccine> findByID(Long id);
+
+    Vaccine save(Vaccine vaccine);
 }

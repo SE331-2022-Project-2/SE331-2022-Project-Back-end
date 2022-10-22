@@ -25,4 +25,9 @@ public class VaccineDaoImpl implements VaccineDao {
     public Optional<Vaccine> findByID(Long id) {
         return vaccineRepository.findById(id);
     }
+
+    @Override
+    public Vaccine save(Vaccine vaccine){
+        return vaccineRepository.save(vaccine);
+    };
 }
