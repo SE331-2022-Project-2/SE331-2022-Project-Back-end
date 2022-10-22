@@ -1,27 +1,25 @@
 package se331.rest.entity;
 
-
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Vaccine {
+public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Long id;
+    String name;
+    String surname;
 
-    @ManyToOne
-    People patient;
-    @ManyToOne
-    Doctor doctor;
-
-    String vaccineName;
-    String date;
-    Integer dose;
+    @OneToMany(mappedBy = "doctor")
+    @Builder.Default
+    List<Vaccine> doVaccines = new ArrayList<>();
 }

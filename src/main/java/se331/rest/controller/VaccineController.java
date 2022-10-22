@@ -16,4 +16,6 @@ public class VaccineController {
     ResponseEntity<?> getVaccines() {
         return ResponseEntity.ok(LabMapper.INSTANCE.getVaccineDTO(vaccineService.getAllVaccine()));
     }
+
+
 }

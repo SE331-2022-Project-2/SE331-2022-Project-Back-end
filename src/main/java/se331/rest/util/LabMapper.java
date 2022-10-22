@@ -2,10 +2,7 @@ package se331.rest.util;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import se331.rest.entity.People;
-import se331.rest.entity.PeopleDTO;
-import se331.rest.entity.Vaccine;
-import se331.rest.entity.VaccineDTO;
+import se331.rest.entity.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,9 +13,12 @@ public interface LabMapper {
 
     PeopleDTO getPeopleDTO(People people);
     VaccineDTO getVaccineDTO(Vaccine vaccine);
+    DoctorDTO getDoctorDTO(Doctor Doctor);
 
     List<PeopleDTO> getPeopleDTO(List<People> peoples);
 
     List<VaccineDTO> getVaccineDTO(List<Vaccine> vaccines);
+
+    List<DoctorDTO> getDoctorDTO(List<Doctor> doctors);
 
 }
