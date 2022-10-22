@@ -19,5 +19,5 @@ public class PeopleDTO {
     String age;
     String hometown;
     String comment;
-    List<Vaccine> hasVaccines;
+    List<VaccineDTO> hasVaccines;
 }
