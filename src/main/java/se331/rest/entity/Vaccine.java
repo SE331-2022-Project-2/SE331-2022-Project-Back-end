@@ -16,9 +16,10 @@ public class Vaccine {
     @EqualsAndHashCode.Exclude
     Long id;
 
-  //  @ManyToOne
-  //  People patient;
+    @ManyToOne
+    People patient;
 
     String vaccineName;
     String date;
+    Integer dose;
 }

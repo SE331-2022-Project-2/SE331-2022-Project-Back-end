@@ -1,4 +1,11 @@
 package se331.rest.repository;
 
-public class VaccineRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import se331.rest.entity.Vaccine;
+
+import java.util.List;
+
+public interface VaccineRepository extends JpaRepository<Vaccine,Long> {
+    List<Vaccine> findAll();
 }

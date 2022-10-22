@@ -23,7 +23,7 @@ public class People {
     String hometown;
     String comment;
 
-  //  @OneToMany(mappedBy = "patient")
-   // @Builder.Default
-   // List<Vaccine> hasVaccines = new ArrayList<>();
+    @OneToMany(mappedBy = "patient")
+    @Builder.Default
+    List<Vaccine> hasVaccines = new ArrayList<>();
 }
