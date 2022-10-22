@@ -13,6 +13,7 @@ import se331.rest.repository.PeopleRepository;
 import se331.rest.repository.VaccineRepository;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 
 @Component
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
@@ -34,7 +35,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("39 years old")
                 .hometown("63 Grand St. Moncks Corner, SC 29461")
                 .comment("Mia Price is in very good health.")
+                .imageUrls(new ArrayList<>())
                 .build();
+        people1.getImageUrls().add("gs://imageupload-69268.appspot.com/31149f2bab58419ff1748883e6647dba.jpg");
         peopleRepository.save(people1);
 
         People people2 = People.builder()
@@ -43,7 +46,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("23 years old")
                 .hometown("51 Golden Star Dr. Huntington, NY 11743")
                 .comment("Daniel Robinson has very bad health.")
+                .imageUrls(new ArrayList<>())
                 .build();
+        people2.getImageUrls().add("gs://imageupload-69268.appspot.com/5141842f0bbe969e5cd7af615eed7a54.jpg");
         peopleRepository.save(people2);
 
         People people3 = People.builder()
@@ -52,7 +57,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("29 years old")
                 .hometown("52 Ryan Street. Sioux City, IA 51106")
                 .comment("Donald Lewis has very bad health")
+                .imageUrls(new ArrayList<>())
                 .build();
+        people3.getImageUrls().add("gs://imageupload-69268.appspot.com/659d4009a6059a2241cf73141f242db6.jpg");
         peopleRepository.save(people3);
 
         People people4 = People.builder()
@@ -61,7 +68,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("27 years old")
                 .hometown("564 Argyle Road. Lithonia, GA 30038")
                 .comment("Nathan Simpson is in very good health.")
+                .imageUrls(new ArrayList<>())
                 .build();
+        people4.getImageUrls().add("gs://imageupload-69268.appspot.com/b306751818a4b8ccb0a681b294fc8a1c.jpg");
         peopleRepository.save(people4);
 
         People people5 = People.builder()
@@ -70,7 +79,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("33 years old")
                 .hometown("9892 Clark St. Pittsburgh, PA 15206")
                 .comment("Thomas Mitchell is in very good health.")
+                .imageUrls(new ArrayList<>())
                 .build();
+        people5.getImageUrls().add("gs://imageupload-69268.appspot.com/d4e373b4d88b16004532ee8dab646b4c.jpg");
         peopleRepository.save(people5);
 
         People people6 = People.builder()
@@ -79,7 +90,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("23 years old")
                 .hometown("546 Arnold Drive. Port Washington, NY 11050")
                 .comment("Nathan Jackson has very bad health.")
+                .imageUrls(new ArrayList<>())
                 .build();
+        people6.getImageUrls().add("gs://imageupload-69268.appspot.com/f0411a5773d50fde980c68dea296faa3.jpg");
         peopleRepository.save(people6);
 
         Doctor doctor1 = Doctor.builder()
