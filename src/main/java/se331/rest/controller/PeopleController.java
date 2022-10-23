@@ -46,4 +46,12 @@ public class PeopleController {
         People output = peopleService.save(people);
         return ResponseEntity.ok(LabMapper.INSTANCE.getPeopleDTO(output));
     }
+
+    @PostMapping("/comment/{id}")
+    public ResponseEntity<?> addComment(@PathVariable("id") Long id, @RequestBody String newComment) {
+        People tempPeople = peopleService.getPeople(id);
+        tempPeople.getComment().add(newComment);
+        peopleService.save(tempPeople);
+        return ResponseEntity.ok(LabMapper.INSTANCE.getPeopleDTO(tempPeople));
+    }
 }

@@ -21,7 +21,9 @@ public class People {
    // List<Vaccine> vaccineList;
     String age;
     String hometown;
-    String comment;
+
+    @ElementCollection
+    List<String> comment;
 
     @OneToMany(mappedBy = "patient")
     @Builder.Default

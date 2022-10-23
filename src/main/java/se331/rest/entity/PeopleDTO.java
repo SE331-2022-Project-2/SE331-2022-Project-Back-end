@@ -18,7 +18,8 @@ public class PeopleDTO {
     // List<Vaccine> vaccineList;
     String age;
     String hometown;
-    String comment;
+    List<String> comment;
+
     List<VaccineDTO> hasVaccines;
     List<String> imageUrls;
 }
