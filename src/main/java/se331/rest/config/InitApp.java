@@ -235,6 +235,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         doctor3.getDoVaccines().add(vac9);
 
         addUser();
+        people1.setUser(user2);
+        user2.setPeople(people1);
     }
 
     User user1, user2, user3;
@@ -242,6 +244,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         Authority authUser = Authority.builder().name(AuthorityName.ROLE_USER).build();
         Authority authAdmin = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
+        Authority authPeople = Authority.builder().name(AuthorityName.ROLE_PEOPLE).build();
+        Authority authDoctor = Authority.builder().name(AuthorityName.ROLE_DOCTOR).build();
         user1 = User.builder()
                 .username("admin")
                 .password(encoder.encode("admin"))
@@ -274,6 +278,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
         authorityRepository.save(authUser);
         authorityRepository.save(authAdmin);
+        authorityRepository.save(authPeople);
+        authorityRepository.save(authDoctor);
         user1.getAuthorities().add(authUser);
         user1.getAuthorities().add(authAdmin);
         user2.getAuthorities().add(authUser);

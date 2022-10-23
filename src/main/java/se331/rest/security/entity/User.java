@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se331.rest.entity.People;
 
 
 import javax.persistence.*;
@@ -61,5 +62,8 @@ public class User {
 	@Builder.Default
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Authority> authorities = new ArrayList<>();
+
+	@OneToOne
+    People people;
 
 }
