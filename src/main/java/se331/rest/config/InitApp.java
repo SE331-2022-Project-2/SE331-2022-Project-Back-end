@@ -53,7 +53,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .comment(new ArrayList<>())
                 .imageUrls(new ArrayList<>())
                 .build();
-        people1.getImageUrls().add("gs://imageupload-69268.appspot.com/31149f2bab58419ff1748883e6647dba.jpg");
+        people1.getImageUrls().add("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/31149f2bab58419ff1748883e6647dba.jpg?alt=media&token=9e62ae4b-82cc-4678-8ca5-d36e492e5f4b");
         people1.getComment().add("Mia Price is in very good health.");
         peopleRepository.save(people1);
 
@@ -65,7 +65,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .comment(new ArrayList<>())
                 .imageUrls(new ArrayList<>())
                 .build();
-        people2.getImageUrls().add("gs://imageupload-69268.appspot.com/5141842f0bbe969e5cd7af615eed7a54.jpg");
+        people2.getImageUrls().add("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/5141842f0bbe969e5cd7af615eed7a54.jpg?alt=media&token=c0970921-66f9-473a-a901-d2260f81365a");
         people2.getComment().add("Daniel Robinson has very bad health.");
         peopleRepository.save(people2);
 
@@ -77,7 +77,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .comment(new ArrayList<>())
                 .imageUrls(new ArrayList<>())
                 .build();
-        people3.getImageUrls().add("gs://imageupload-69268.appspot.com/659d4009a6059a2241cf73141f242db6.jpg");
+        people3.getImageUrls().add("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/659d4009a6059a2241cf73141f242db6.jpg?alt=media&token=d23bcac4-7252-462f-911c-2c2281398d56");
         people3.getComment().add("Donald Lewis has very bad health");
         peopleRepository.save(people3);
 
@@ -89,7 +89,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .comment(new ArrayList<>())
                 .imageUrls(new ArrayList<>())
                 .build();
-        people4.getImageUrls().add("gs://imageupload-69268.appspot.com/b306751818a4b8ccb0a681b294fc8a1c.jpg");
+        people4.getImageUrls().add("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/b306751818a4b8ccb0a681b294fc8a1c.jpg?alt=media&token=6db8851b-0e45-49c4-b1a0-e49f5d8edb65");
         people4.getComment().add("Nathan Simpson is in very good health.");
         peopleRepository.save(people4);
 
@@ -101,7 +101,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .comment(new ArrayList<>())
                 .imageUrls(new ArrayList<>())
                 .build();
-        people5.getImageUrls().add("gs://imageupload-69268.appspot.com/d4e373b4d88b16004532ee8dab646b4c.jpg");
+        people5.getImageUrls().add("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/d4e373b4d88b16004532ee8dab646b4c.jpg?alt=media&token=55a540a7-3932-40b5-b49b-ccc18eaf5297");
         people5.getComment().add("Thomas Mitchell is in very good health.");
         peopleRepository.save(people5);
 
@@ -113,7 +113,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .comment(new ArrayList<>())
                 .imageUrls(new ArrayList<>())
                 .build();
-        people6.getImageUrls().add("gs://imageupload-69268.appspot.com/f0411a5773d50fde980c68dea296faa3.jpg");
+        people6.getImageUrls().add("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/f0411a5773d50fde980c68dea296faa3.jpg?alt=media&token=8dfdda0a-1b2e-4f4c-9ff2-d65b42229aa0");
         people6.getComment().add("Nathan Jackson has very bad health.");
         peopleRepository.save(people6);
 
