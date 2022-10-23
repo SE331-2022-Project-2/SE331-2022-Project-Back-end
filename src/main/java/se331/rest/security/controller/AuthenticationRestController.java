@@ -16,8 +16,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import se331.rest.entity.Organizer;
-import se331.rest.repository.OrganizerRepository;
 import se331.rest.security.entity.Authority;
 import se331.rest.security.entity.AuthorityName;
 import se331.rest.security.entity.JwtUser;
@@ -60,9 +58,6 @@ public class AuthenticationRestController {
     @Autowired
     AuthorityRepository authorityRepository;
 
-    @Autowired
-    OrganizerRepository organizerRepository;
-
     @PostMapping("${jwt.route.authentication.path}")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException {
 
@@ -81,42 +76,39 @@ public class AuthenticationRestController {
         Map result = new HashMap();
         result.put("token", token);
         User user = userRepository.findById(((JwtUser) userDetails).getId()).orElse(null);
-        if (user.getOrganizer() != null) {
-            result.put("user", LabMapper.INSTANCE.getOrganizerAuthDTO( user.getOrganizer()));
-        }
 
         return ResponseEntity.ok(result);
     }
 
 
-    @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody User user) throws  AuthenticationException{
-        PasswordEncoder encoder = new BCryptPasswordEncoder();
-        Authority authAdmin = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
-        authorityRepository.save(authAdmin);
-        User user2 = User.builder()
-                .enabled(true)
-                .email(user.getEmail())
-                .firstname("")
-                .lastname("")
-                .username(user.getUsername())
-                .password(encoder.encode(user.getPassword()))
-                .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01)
-                        .atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                .build();
+    //@PostMapping("/register")
+   // public ResponseEntity<?> registerUser(@RequestBody User user) throws  AuthenticationException{
+    //    PasswordEncoder encoder = new BCryptPasswordEncoder();
+    //    Authority authAdmin = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
+     //   authorityRepository.save(authAdmin);
+     //   User user2 = User.builder()
+     //           .enabled(true)
+      //          .email(user.getEmail())
+     //           .firstname("")
+     //           .lastname("")
+     //           .username(user.getUsername())
+     //           .password(encoder.encode(user.getPassword()))
+      //          .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01)
+     //                   .atStartOfDay(ZoneId.systemDefault()).toInstant()))
+     //           .build();
 
-        user2.getAuthorities().add(authAdmin);
-        userRepository.save(user2);
+     //   user2.getAuthorities().add(authAdmin);
+     //   userRepository.save(user2);
 
-        Organizer organizer = Organizer.builder().name(user.getUsername()).build();
-        organizerRepository.save(organizer);
+      //  Organizer organizer = Organizer.builder().name(user.getUsername()).build();
+      //  organizerRepository.save(organizer);
 
-        organizer.setUser(user2);
-        user2.setOrganizer(organizer);
+      //  organizer.setUser(user2);
+      //  user2.setOrganizer(organizer);
 
-        userService.save(user2);
-        return ResponseEntity.ok(LabMapper.INSTANCE.getUserDTO(user2));
-    }
+      //  userService.save(user2);
+      //  return ResponseEntity.ok(LabMapper.INSTANCE.getUserDTO(user2));
+  //  }
 
 
     @GetMapping(value = "${jwt.route.authentication.refresh}")
