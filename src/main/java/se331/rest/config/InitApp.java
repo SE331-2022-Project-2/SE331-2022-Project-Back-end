@@ -7,9 +7,11 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import se331.rest.entity.Admin;
 import se331.rest.entity.Doctor;
 import se331.rest.entity.People;
 import se331.rest.entity.Vaccine;
+import se331.rest.repository.AdminRepository;
 import se331.rest.repository.DoctorRepository;
 import se331.rest.repository.PeopleRepository;
 import se331.rest.repository.VaccineRepository;
@@ -41,6 +43,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    AdminRepository adminRepository;
 
     @Override
     @Transactional
@@ -237,9 +242,16 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         addUser();
         people1.setUser(user2);
         user2.setPeople(people1);
+        doctor1.setUser(user4);
+        user4.setDoctor(doctor1);
+
+        Admin admin = Admin.builder().name("admin").build();
+        adminRepository.save(admin);
+        admin.setUser(user1);
+        user1.setAdmin(admin);
     }
 
-    User user1, user2, user3;
+    User user1, user2, user3, user4;
     private void addUser() {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         Authority authUser = Authority.builder().name(AuthorityName.ROLE_USER).build();
@@ -276,6 +288,16 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
 
+        user4 = User.builder()
+                .username("doctor")
+                .password(encoder.encode("doctor"))
+                .firstname("doctor")
+                .lastname("doctor")
+                .email("enabledDoctor@user.com")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
+
         authorityRepository.save(authUser);
         authorityRepository.save(authAdmin);
         authorityRepository.save(authPeople);
@@ -284,8 +306,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         user1.getAuthorities().add(authAdmin);
         user2.getAuthorities().add(authUser);
         user3.getAuthorities().add(authUser);
+        user4.getAuthorities().add(authDoctor);
         userRepository.save(user1);
         userRepository.save(user2);
         userRepository.save(user3);
+        userRepository.save(user4);
     }
 }

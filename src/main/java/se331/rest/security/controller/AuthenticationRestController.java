@@ -78,8 +78,10 @@ public class AuthenticationRestController {
         User user = userRepository.findById(((JwtUser) userDetails).getId()).orElse(null);
         if (user.getPeople() != null){
             result.put("user", LabMapper.INSTANCE.getPeopleAuthDTO( user.getPeople()));
-        } else if(user.getPeople() == null){
-            result.put("user", LabMapper.INSTANCE.getUserAuthDTO( user));
+        } else if(user.getDoctor() != null) {
+            result.put("user", LabMapper.INSTANCE.getDoctorAuthDTO(user.getDoctor()));
+        }else if(user.getAdmin() == null){
+            result.put("user", LabMapper.INSTANCE.getAdminAuthDTO(user.getAdmin()));
         }
 
         return ResponseEntity.ok(result);

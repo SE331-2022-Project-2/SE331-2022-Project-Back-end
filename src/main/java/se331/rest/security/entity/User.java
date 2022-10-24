@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se331.rest.entity.Admin;
+import se331.rest.entity.Doctor;
 import se331.rest.entity.People;
 
 
@@ -65,5 +67,11 @@ public class User {
 
 	@OneToOne
     People people;
+
+	@OneToOne
+    Doctor doctor;
+
+	@OneToOne
+    Admin admin;
 
 }
