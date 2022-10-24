@@ -88,34 +88,34 @@ public class AuthenticationRestController {
     }
 
 
-    //@PostMapping("/register")
-   // public ResponseEntity<?> registerUser(@RequestBody User user) throws  AuthenticationException{
-    //    PasswordEncoder encoder = new BCryptPasswordEncoder();
-    //    Authority authAdmin = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
-     //   authorityRepository.save(authAdmin);
-     //   User user2 = User.builder()
-     //           .enabled(true)
-      //          .email(user.getEmail())
-     //           .firstname("")
-     //           .lastname("")
-     //           .username(user.getUsername())
-     //           .password(encoder.encode(user.getPassword()))
-      //          .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01)
-     //                   .atStartOfDay(ZoneId.systemDefault()).toInstant()))
-     //           .build();
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@RequestBody User user) throws  AuthenticationException{
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        Authority authUser = Authority.builder().name(AuthorityName.ROLE_USER).build();
+        authorityRepository.save(authUser);
+        User regUser = User.builder()
+                .enabled(true)
+                .email(user.getEmail())
+                .firstname("")
+                .lastname("")
+                .username(user.getUsername())
+                .password(encoder.encode(user.getPassword()))
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01)
+                       .atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
 
-     //   user2.getAuthorities().add(authAdmin);
-     //   userRepository.save(user2);
+        regUser.getAuthorities().add(authUser);
+        userRepository.save(regUser);
 
-      //  Organizer organizer = Organizer.builder().name(user.getUsername()).build();
-      //  organizerRepository.save(organizer);
+        //Organizer organizer = Organizer.builder().name(user.getUsername()).build();
+        //organizerRepository.save(organizer);
 
-      //  organizer.setUser(user2);
-      //  user2.setOrganizer(organizer);
+        //organizer.setUser(user2);
+        //user2.setOrganizer(organizer);
 
-      //  userService.save(user2);
-      //  return ResponseEntity.ok(LabMapper.INSTANCE.getUserDTO(user2));
-  //  }
+        userService.save(regUser);
+        return ResponseEntity.ok(LabMapper.INSTANCE.getUserDTO(regUser));
+    }
 
 
     @GetMapping(value = "${jwt.route.authentication.refresh}")

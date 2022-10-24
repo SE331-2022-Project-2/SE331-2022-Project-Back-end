@@ -6,6 +6,7 @@ import org.mapstruct.factory.Mappers;
 import se331.rest.entity.*;
 import se331.rest.security.entity.User;
 import se331.rest.security.entity.UserAuthDTO;
+import se331.rest.security.entity.UserDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,4 +36,6 @@ public interface LabMapper {
 
     @Mapping(target = "authorities", expression = "java(admin.getUser().getAuthorities().stream().map(auth -> auth.getName().name()).collect(Collectors.toList()))")
     AdminAuthDTO getAdminAuthDTO(Admin admin);
+
+    UserDTO getUserDTO(User user);
 }
