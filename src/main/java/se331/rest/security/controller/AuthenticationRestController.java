@@ -82,6 +82,8 @@ public class AuthenticationRestController {
             result.put("user", LabMapper.INSTANCE.getDoctorAuthDTO(user.getDoctor()));
         }else if(user.getAdmin() == null){
             result.put("user", LabMapper.INSTANCE.getAdminAuthDTO(user.getAdmin()));
+        } else {
+            result.put("user", LabMapper.INSTANCE.getUserAuthDTO(user));
         }
 
         return ResponseEntity.ok(result);
