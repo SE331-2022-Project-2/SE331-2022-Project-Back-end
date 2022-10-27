@@ -38,4 +38,6 @@ public interface LabMapper {
     AdminAuthDTO getAdminAuthDTO(Admin admin);
 
     UserDTO getUserDTO(User user);
+
+    List<UserDTO> getUserDTO(List<User> users);
 }

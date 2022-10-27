@@ -4,6 +4,9 @@ package se331.rest.security.controller;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,6 +19,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import se331.rest.entity.People;
 import se331.rest.security.entity.Authority;
 import se331.rest.security.entity.AuthorityName;
 import se331.rest.security.entity.JwtUser;
@@ -104,8 +108,11 @@ public class AuthenticationRestController {
                 .password(encoder.encode(user.getPassword()))
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01)
                        .atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .age(user.getAge())
+                .hometown(user.getHometown())
+                .imageUrls(user.getImageUrls())
                 .build();
-
+        
         regUser.getAuthorities().add(authUser);
         userRepository.save(regUser);
 
@@ -132,6 +139,19 @@ public class AuthenticationRestController {
         } else {
             return ResponseEntity.badRequest().body(null);
         }
+    }
+
+    @GetMapping("user")
+    public ResponseEntity<?> getUserLists(@RequestParam(value = "_limit", required = false) Integer perPage
+            , @RequestParam(value = "_page", required = false) Integer page) {
+        perPage = perPage == null ? 3 : perPage;
+        page = page == null ? 1 : page;
+        Page<User> pageOutput;
+        pageOutput = userService.getUsers(perPage, page);
+        HttpHeaders responseHeader = new HttpHeaders();
+
+        responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
+        return new ResponseEntity<>(LabMapper.INSTANCE.getUserDTO(pageOutput.getContent()), responseHeader , HttpStatus.OK);
     }
 
 
