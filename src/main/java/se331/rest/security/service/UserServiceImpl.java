@@ -22,4 +22,9 @@ public class UserServiceImpl implements UserService{
         return userDao.getUsers(pageSize,page);
     }
 
+    @Override
+    public User getUser(Long id) {
+        return userDao.getUsers(id);
+    }
+
 }

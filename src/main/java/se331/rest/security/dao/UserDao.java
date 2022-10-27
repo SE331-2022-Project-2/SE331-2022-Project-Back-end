@@ -12,4 +12,6 @@ public interface UserDao {
     Page<User> getUsers(Integer pageSize, Integer page);
 
     Optional<User> findByID(Long id);
+
+    User getUsers(Long id);
 }

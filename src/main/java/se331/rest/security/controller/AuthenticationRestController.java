@@ -19,6 +19,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import se331.rest.entity.People;
 import se331.rest.security.entity.Authority;
 import se331.rest.security.entity.AuthorityName;
@@ -155,6 +156,15 @@ public class AuthenticationRestController {
     }
 
 
+    @GetMapping("user/{id}")
+    public ResponseEntity<?> getUser(@PathVariable("id") Long id) {
+        User output = userService.getUser(id);
+        if(output != null){
+            return ResponseEntity.ok(LabMapper.INSTANCE.getUserDTO(output));
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"The given id is not found");
+        }
+    }
 
 
 

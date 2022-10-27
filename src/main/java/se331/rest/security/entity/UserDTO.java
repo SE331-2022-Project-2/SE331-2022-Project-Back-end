@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.ElementCollection;
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -14,4 +17,9 @@ public class UserDTO {
     String username;
     String email;
     String password;
+
+    String age;
+    String hometown;
+    List<String> imageUrls;
+
 }

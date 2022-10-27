@@ -32,4 +32,10 @@ public class UserDaoImpl implements UserDao {
     public Optional<User> findByID(Long id){
         return userRepository.findById(id);
     }
+
+    @Override
+    public User getUsers(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+
 }
