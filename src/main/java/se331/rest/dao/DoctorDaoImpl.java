@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import se331.rest.entity.Doctor;
+import se331.rest.entity.People;
 import se331.rest.repository.DoctorRepository;
 
 import java.util.Optional;
@@ -41,5 +43,10 @@ public class DoctorDaoImpl implements DoctorDao{
     @Override
     public Optional<Doctor> findByID(Long id){
         return doctorRepository.findById(id);
+    }
+
+    @Override
+    public Page<Doctor> getDoctor(Pageable pageRequest) {
+        return doctorRepository.findAll(pageRequest);
     }
 }

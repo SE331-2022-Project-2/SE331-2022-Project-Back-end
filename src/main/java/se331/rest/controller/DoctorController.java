@@ -62,4 +62,9 @@ public class DoctorController {
 
         return ResponseEntity.ok(LabMapper.INSTANCE.getDoctorDTO(appD));
     }
+
+    @GetMapping("doctorAll")
+    ResponseEntity<?> getDoctorLists() {
+        return ResponseEntity.ok(LabMapper.INSTANCE.getDoctorDTO(doctorService.getAllDoctor()));
+    }
 }

@@ -47,7 +47,7 @@ public class WebSecurityConfig {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .authorizeRequests()
-                .antMatchers("/auth/**",  "/refresh", "/register","/uploadFile","/user","/applyPeople","/applyDoctor","/vaccines","/people/**","/comment/**","/user/**","/peopleAll").permitAll()
+                .antMatchers("/auth/**",  "/refresh", "/register","/uploadFile","/user","/applyPeople","/applyDoctor","/vaccines","/people/**","/comment/**","/user/**","/peopleAll","/doctorAll").permitAll()
                 .antMatchers(HttpMethod.GET,"/event").permitAll()
                 .antMatchers(HttpMethod.GET,"/login").permitAll()
                 .antMatchers(HttpMethod.GET,"/organizers").permitAll()
