@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import se331.rest.entity.People;
+import se331.rest.entity.Vaccine;
 import se331.rest.repository.PeopleRepository;
 
 import java.util.Optional;
@@ -39,5 +41,9 @@ public class PeopleDaoImpl implements PeopleDao{
     @Override
     public Optional<People> findByID(Long id){
         return peopleRepository.findById(id);
+    }
+    @Override
+    public Page<People> getPeople(Pageable pageRequest) {
+        return peopleRepository.findAll(pageRequest);
     }
 }

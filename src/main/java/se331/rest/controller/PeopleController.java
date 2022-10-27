@@ -50,6 +50,11 @@ public class PeopleController {
         return new ResponseEntity<>(LabMapper.INSTANCE.getPeopleDTO(pageOutput.getContent()), responseHeader , HttpStatus.OK);
     }
 
+    @GetMapping("peopleAll")
+    ResponseEntity<?> getPeopleLists() {
+        return ResponseEntity.ok(LabMapper.INSTANCE.getPeopleDTO(peopleService.getAllPeople()));
+    }
+
     @GetMapping("people/{id}")
     public ResponseEntity<?> getPeople(@PathVariable("id") Long id) {
         People output = peopleService.getPeople(id);

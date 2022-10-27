@@ -12,7 +12,7 @@ public interface PeopleDao {
     Integer getPeopleSize();
     Page<People> getPeoples(Integer pageSize, Integer page);
     People getPeoples(Long id);
-
+    Page<People> getPeople(Pageable pageRequest);
     People save(People people);
     //Page<People> getPeoples(String name, Pageable page);
     Optional<People> findByID(Long id);
