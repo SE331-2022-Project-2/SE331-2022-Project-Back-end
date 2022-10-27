@@ -5,18 +5,37 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import se331.rest.entity.People;
+import se331.rest.security.dao.UserDao;
+import se331.rest.security.entity.Authority;
+import se331.rest.security.entity.AuthorityName;
+import se331.rest.security.entity.User;
+import se331.rest.security.repository.AuthorityRepository;
+import se331.rest.security.repository.UserRepository;
+import se331.rest.security.service.UserService;
 import se331.rest.service.PeopleService;
 import se331.rest.util.LabMapper;
+
+import java.util.List;
 
 @Controller
 public class PeopleController {
 
     @Autowired
     PeopleService peopleService;
+
+    @Autowired
+    UserDao userDao;
+
+    @Autowired
+    AuthorityRepository authorityRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @GetMapping("people")
     public ResponseEntity<?> getPeopleLists(@RequestParam(value = "_limit", required = false) Integer perPage
@@ -53,5 +72,24 @@ public class PeopleController {
         tempPeople.getComment().add(newComment);
         peopleService.save(tempPeople);
         return ResponseEntity.ok(LabMapper.INSTANCE.getPeopleDTO(tempPeople));
+    }
+
+    @PostMapping("/applyPeople")
+    public ResponseEntity<?> applyPeople(@RequestBody User user) throws AuthenticationException {
+        User tempUser = userDao.findByID(user.getId()).orElse(null);
+        Authority authPeople = Authority.builder().name(AuthorityName.ROLE_PEOPLE).build();
+        authorityRepository.save(authPeople);
+        tempUser.getAuthorities().add(authPeople);
+        People appP = People.builder().name(tempUser.getFirstname())
+                .surname(tempUser.getLastname())
+                .age(tempUser.getAge())
+                .hometown(tempUser.getHometown())
+                .user(userDao.findByID(user.getId()).orElse(null))
+                .build();
+        userRepository.save(tempUser);
+        tempUser.setPeople(appP);
+        peopleService.save(appP);
+
+        return ResponseEntity.ok(LabMapper.INSTANCE.getPeopleDTO(appP));
     }
 }

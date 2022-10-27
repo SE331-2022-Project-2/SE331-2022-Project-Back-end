@@ -74,4 +74,10 @@ public class User {
 	@OneToOne
     Admin admin;
 
+    String age;
+    String hometown;
+
+    @ElementCollection
+    List<String> imageUrls;
+
 }

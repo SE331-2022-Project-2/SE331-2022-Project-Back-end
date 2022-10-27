@@ -9,6 +9,8 @@ import se331.rest.entity.People;
 import se331.rest.security.entity.User;
 import se331.rest.security.repository.UserRepository;
 
+import java.util.Optional;
+
 @Profile("db")
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -23,5 +25,11 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Page<User> getUsers(Integer pageSize, Integer page) {
         return userRepository.findAll(PageRequest.of(page-1,pageSize));
+    }
+
+
+    @Override
+    public Optional<User> findByID(Long id){
+        return userRepository.findById(id);
     }
 }

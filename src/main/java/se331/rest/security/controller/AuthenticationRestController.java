@@ -102,8 +102,8 @@ public class AuthenticationRestController {
         User regUser = User.builder()
                 .enabled(true)
                 .email(user.getEmail())
-                .firstname("")
-                .lastname("")
+                .firstname(user.getFirstname())
+                .lastname(user.getLastname())
                 .username(user.getUsername())
                 .password(encoder.encode(user.getPassword()))
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021,01,01)
@@ -112,7 +112,7 @@ public class AuthenticationRestController {
                 .hometown(user.getHometown())
                 .imageUrls(user.getImageUrls())
                 .build();
-        
+
         regUser.getAuthorities().add(authUser);
         userRepository.save(regUser);
 
@@ -153,6 +153,10 @@ public class AuthenticationRestController {
         responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
         return new ResponseEntity<>(LabMapper.INSTANCE.getUserDTO(pageOutput.getContent()), responseHeader , HttpStatus.OK);
     }
+
+
+
+
 
 
 }
