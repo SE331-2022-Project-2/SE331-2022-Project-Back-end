@@ -244,6 +244,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         user2.setPeople(people1);
         doctor1.setUser(user4);
         user4.setDoctor(doctor1);
+        user5.setPeople(people5);
+        people5.setUser(user5);
 
         Admin admin = Admin.builder().name("admin").build();
         adminRepository.save(admin);
@@ -251,7 +253,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         user1.setAdmin(admin);
     }
 
-    User user1, user2, user3, user4;
+    User user1, user2, user3, user4, user5;
     private void addUser() {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         Authority authUser = Authority.builder().name(AuthorityName.ROLE_USER).build();
@@ -298,6 +300,16 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
 
+        user5 = User.builder()
+                .username("user2")
+                .password(encoder.encode("user2"))
+                .firstname("user2")
+                .lastname("user2")
+                .email("enabledDoctor@user.com")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
+
         authorityRepository.save(authUser);
         authorityRepository.save(authAdmin);
         authorityRepository.save(authPeople);
@@ -308,9 +320,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         user2.getAuthorities().add(authPeople);
         user3.getAuthorities().add(authUser);
         user4.getAuthorities().add(authDoctor);
+        user5.getAuthorities().add(authPeople);
         userRepository.save(user1);
         userRepository.save(user2);
         userRepository.save(user3);
         userRepository.save(user4);
+        userRepository.save(user5);
     }
 }
