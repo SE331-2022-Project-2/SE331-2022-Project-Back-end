@@ -21,5 +21,5 @@ public class UserDTO {
     String age;
     String hometown;
     List<String> imageUrls;
-
+    List<String> authorities;
 }
