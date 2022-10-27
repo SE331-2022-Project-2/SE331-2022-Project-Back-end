@@ -14,4 +14,5 @@ public class VaccineDTO {
     String vaccineName;
     String date;
     Integer dose;
+    DoctorDTO doctor;
 }
