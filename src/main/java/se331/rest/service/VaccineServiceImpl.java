@@ -43,9 +43,6 @@ public class VaccineServiceImpl implements VaccineService{
         vaccine.setPatient(people);
         people.getHasVaccines().add(vaccine);
 
-        Doctor doctor = doctorDao.findByID(vaccine.getDoctor().getId()).orElse(null);
-        vaccine.setDoctor(doctor);
-        doctor.getDoVaccines().add(vaccine);
 
         return vaccineDao.save(vaccine);
     }

@@ -77,7 +77,6 @@ public class User {
     String age;
     String hometown;
 
-    @ElementCollection
-    List<String> imageUrls;
+    String imageUrls;
 
 }

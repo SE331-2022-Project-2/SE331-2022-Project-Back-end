@@ -20,6 +20,6 @@ public class UserDTO {
 
     String age;
     String hometown;
-    List<String> imageUrls;
+    String imageUrls;
     List<String> authorities;
 }

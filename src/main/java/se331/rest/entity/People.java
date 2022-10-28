@@ -30,9 +30,11 @@ public class People {
     @Builder.Default
     List<Vaccine> hasVaccines = new ArrayList<>();
 
-    @ElementCollection
-    List<String> imageUrls;
+    String imageUrls;
 
     @OneToOne
     User user;
+
+    @ManyToOne
+    Doctor doctor;
 }
