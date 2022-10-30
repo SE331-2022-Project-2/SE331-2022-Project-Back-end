@@ -94,6 +94,7 @@ public class PeopleController {
                 .surname(tempUser.getLastname())
                 .age(tempUser.getAge())
                 .hometown(tempUser.getHometown())
+                .imageUrls(tempUser.getImageUrls())
                 .user(userDao.findByID(user.getId()).orElse(null))
                 .build();
         userRepository.save(tempUser);
