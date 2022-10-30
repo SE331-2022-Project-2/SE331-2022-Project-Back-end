@@ -56,9 +56,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("39 years old")
                 .hometown("63 Grand St. Moncks Corner, SC 29461")
                 .comment(new ArrayList<>())
-                .imageUrls(new ArrayList<>())
+                .imageUrls("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/31149f2bab58419ff1748883e6647dba.jpg?alt=media&token=9e62ae4b-82cc-4678-8ca5-d36e492e5f4b")
                 .build();
-        people1.getImageUrls().add("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/31149f2bab58419ff1748883e6647dba.jpg?alt=media&token=9e62ae4b-82cc-4678-8ca5-d36e492e5f4b");
+
         people1.getComment().add("Mia Price is in very good health.");
         peopleRepository.save(people1);
 
@@ -68,9 +68,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("23 years old")
                 .hometown("51 Golden Star Dr. Huntington, NY 11743")
                 .comment(new ArrayList<>())
-                .imageUrls(new ArrayList<>())
+                .imageUrls("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/5141842f0bbe969e5cd7af615eed7a54.jpg?alt=media&token=c0970921-66f9-473a-a901-d2260f81365a")
                 .build();
-        people2.getImageUrls().add("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/5141842f0bbe969e5cd7af615eed7a54.jpg?alt=media&token=c0970921-66f9-473a-a901-d2260f81365a");
         people2.getComment().add("Daniel Robinson has very bad health.");
         peopleRepository.save(people2);
 
@@ -80,9 +79,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("29 years old")
                 .hometown("52 Ryan Street. Sioux City, IA 51106")
                 .comment(new ArrayList<>())
-                .imageUrls(new ArrayList<>())
+                .imageUrls("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/659d4009a6059a2241cf73141f242db6.jpg?alt=media&token=d23bcac4-7252-462f-911c-2c2281398d56")
                 .build();
-        people3.getImageUrls().add("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/659d4009a6059a2241cf73141f242db6.jpg?alt=media&token=d23bcac4-7252-462f-911c-2c2281398d56");
         people3.getComment().add("Donald Lewis has very bad health");
         peopleRepository.save(people3);
 
@@ -92,9 +90,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("27 years old")
                 .hometown("564 Argyle Road. Lithonia, GA 30038")
                 .comment(new ArrayList<>())
-                .imageUrls(new ArrayList<>())
+                .imageUrls("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/b306751818a4b8ccb0a681b294fc8a1c.jpg?alt=media&token=6db8851b-0e45-49c4-b1a0-e49f5d8edb65")
                 .build();
-        people4.getImageUrls().add("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/b306751818a4b8ccb0a681b294fc8a1c.jpg?alt=media&token=6db8851b-0e45-49c4-b1a0-e49f5d8edb65");
         people4.getComment().add("Nathan Simpson is in very good health.");
         peopleRepository.save(people4);
 
@@ -104,9 +101,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("33 years old")
                 .hometown("9892 Clark St. Pittsburgh, PA 15206")
                 .comment(new ArrayList<>())
-                .imageUrls(new ArrayList<>())
+                .imageUrls("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/d4e373b4d88b16004532ee8dab646b4c.jpg?alt=media&token=55a540a7-3932-40b5-b49b-ccc18eaf5297")
                 .build();
-        people5.getImageUrls().add("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/d4e373b4d88b16004532ee8dab646b4c.jpg?alt=media&token=55a540a7-3932-40b5-b49b-ccc18eaf5297");
         people5.getComment().add("Thomas Mitchell is in very good health.");
         peopleRepository.save(people5);
 
@@ -116,9 +112,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .age("23 years old")
                 .hometown("546 Arnold Drive. Port Washington, NY 11050")
                 .comment(new ArrayList<>())
-                .imageUrls(new ArrayList<>())
+                .imageUrls("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/f0411a5773d50fde980c68dea296faa3.jpg?alt=media&token=8dfdda0a-1b2e-4f4c-9ff2-d65b42229aa0")
                 .build();
-        people6.getImageUrls().add("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/f0411a5773d50fde980c68dea296faa3.jpg?alt=media&token=8dfdda0a-1b2e-4f4c-9ff2-d65b42229aa0");
         people6.getComment().add("Nathan Jackson has very bad health.");
         peopleRepository.save(people6);
 
@@ -145,99 +140,89 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .date("20 January 2022")
                 .dose(1)
                 .patient(people1)
-                .doctor(doctor1)
                 .build();
         vaccineRepository.save(vac1);
         people1.getHasVaccines().add(vac1);
-        doctor1.getDoVaccines().add(vac1);
 
         Vaccine vac2 = Vaccine.builder()
                 .vaccineName("Pfizer")
                 .date("15 January 2022")
                 .dose(1)
                 .patient(people2)
-                .doctor(doctor1)
                 .build();
         vaccineRepository.save(vac2);
         people2.getHasVaccines().add(vac2);
-        doctor1.getDoVaccines().add(vac2);
 
         Vaccine vac3 = Vaccine.builder()
                 .vaccineName("Sinovac")
                 .date("9 December 2021")
                 .dose(1)
                 .patient(people3)
-                .doctor(doctor2)
                 .build();
         vaccineRepository.save(vac3);
         people3.getHasVaccines().add(vac3);
-        doctor2.getDoVaccines().add(vac3);
 
         Vaccine vac4 = Vaccine.builder()
                 .vaccineName("Pfizer")
                 .date("3 March 2022")
                 .dose(2)
                 .patient(people3)
-                .doctor(doctor2)
                 .build();
         vaccineRepository.save(vac4);
         people3.getHasVaccines().add(vac4);
-        doctor2.getDoVaccines().add(vac4);
 
         Vaccine vac5 = Vaccine.builder()
                 .vaccineName("Moderna")
                 .date("3 January 2022")
                 .dose(1)
                 .patient(people4)
-                .doctor(doctor2)
                 .build();
         vaccineRepository.save(vac5);
         people4.getHasVaccines().add(vac5);
-        doctor2.getDoVaccines().add(vac5);
 
         Vaccine vac6 = Vaccine.builder()
                 .vaccineName("Pfizer")
                 .date("24 April 2022")
                 .dose(2)
                 .patient(people4)
-                .doctor(doctor2)
                 .build();
         vaccineRepository.save(vac6);
         people4.getHasVaccines().add(vac6);
-        doctor2.getDoVaccines().add(vac6);
 
         Vaccine vac7 = Vaccine.builder()
                 .vaccineName("Moderna")
                 .date("12 January 2022")
                 .dose(1)
                 .patient(people5)
-                .doctor(doctor3)
                 .build();
         vaccineRepository.save(vac7);
         people5.getHasVaccines().add(vac7);
-        doctor3.getDoVaccines().add(vac7);
 
         Vaccine vac8 = Vaccine.builder()
                 .vaccineName("Moderna")
                 .date("1 April 2022")
                 .dose(2)
                 .patient(people5)
-                .doctor(doctor3)
                 .build();
         vaccineRepository.save(vac8);
         people5.getHasVaccines().add(vac8);
-        doctor3.getDoVaccines().add(vac8);
 
         Vaccine vac9 = Vaccine.builder()
                 .vaccineName("Sinovac")
                 .date("10 October 2021")
                 .dose(1)
                 .patient(people6)
-                .doctor(doctor3)
                 .build();
         vaccineRepository.save(vac9);
         people6.getHasVaccines().add(vac9);
-        doctor3.getDoVaccines().add(vac9);
+
+
+        people1.setDoctor(doctor1);
+        people2.setDoctor(doctor1);
+        people3.setDoctor(doctor2);
+        people4.setDoctor(doctor2);
+        people5.setDoctor(doctor3);
+        people6.setDoctor(doctor3);
 
         addUser();
         people1.setUser(user2);

@@ -21,5 +21,7 @@ public class PeopleDTO {
     List<String> comment;
 
     List<VaccineDTO> hasVaccines;
-    List<String> imageUrls;
+    String imageUrls;
+
+    DoctorDTO doctor;
 }

@@ -20,10 +20,10 @@ public class Doctor {
     String name;
     String surname;
 
-    @OneToMany(mappedBy = "doctor")
-    @Builder.Default
-    List<Vaccine> doVaccines = new ArrayList<>();
-
     @OneToOne
     User user;
+
+    @OneToMany (mappedBy = "doctor")
+    @Builder.Default
+    List<People> patient = new ArrayList<>();
 }

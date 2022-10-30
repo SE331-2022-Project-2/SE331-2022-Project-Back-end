@@ -9,6 +9,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import se331.rest.dao.DoctorDao;
+import se331.rest.entity.Doctor;
 import se331.rest.entity.People;
 import se331.rest.security.dao.UserDao;
 import se331.rest.security.entity.Authority;
@@ -36,6 +38,9 @@ public class PeopleController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    DoctorDao doctorDao;
 
     @GetMapping("people")
     public ResponseEntity<?> getPeopleLists(@RequestParam(value = "_limit", required = false) Integer perPage
@@ -96,5 +101,15 @@ public class PeopleController {
         peopleService.save(appP);
 
         return ResponseEntity.ok(LabMapper.INSTANCE.getPeopleDTO(appP));
+    }
+
+    @PostMapping("/setDoctor")
+    public ResponseEntity<?> setDoctorToPatient(@RequestBody People people) {
+        People tempPeople = peopleService.getPeople(people.getId());
+        Doctor tempDoctor = doctorDao.findByID(people.getDoctor().getId()).orElse(null);
+        tempPeople.setDoctor(tempDoctor);
+        peopleService.save(tempPeople);
+        return ResponseEntity.ok(LabMapper.INSTANCE.getPeopleDTO(tempPeople));
+
     }
 }

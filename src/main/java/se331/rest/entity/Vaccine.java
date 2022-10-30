@@ -18,8 +18,6 @@ public class Vaccine {
 
     @ManyToOne
     People patient;
-    @ManyToOne
-    Doctor doctor;
 
     String vaccineName;
     String date;
