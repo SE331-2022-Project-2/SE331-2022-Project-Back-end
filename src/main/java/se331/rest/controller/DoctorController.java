@@ -51,6 +51,7 @@ public class DoctorController {
         User tempUser = userDao.findByID(user.getId()).orElse(null);
         Authority authDoctor = Authority.builder().name(AuthorityName.ROLE_DOCTOR).build();
         authorityRepository.save(authDoctor);
+        tempUser.getAuthorities().clear();
         tempUser.getAuthorities().add(authDoctor);
         Doctor appD = Doctor.builder().name(tempUser.getFirstname())
                 .surname(tempUser.getLastname())

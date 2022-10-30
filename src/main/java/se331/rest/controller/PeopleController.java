@@ -89,6 +89,7 @@ public class PeopleController {
         User tempUser = userDao.findByID(user.getId()).orElse(null);
         Authority authPeople = Authority.builder().name(AuthorityName.ROLE_PEOPLE).build();
         authorityRepository.save(authPeople);
+        tempUser.getAuthorities().clear();
         tempUser.getAuthorities().add(authPeople);
         People appP = People.builder().name(tempUser.getFirstname())
                 .surname(tempUser.getLastname())
