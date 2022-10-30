@@ -47,13 +47,16 @@ public class WebSecurityConfig {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .authorizeRequests()
-                .antMatchers("/auth/**",  "/refresh", "/register","/uploadFile","/user","/applyPeople","/applyDoctor","/vaccines","/people/**","/comment/**","/user/**","/peopleAll","/doctorAll").permitAll()
-                .antMatchers(HttpMethod.GET,"/event").permitAll()
-                .antMatchers(HttpMethod.GET,"/login").permitAll()
-                .antMatchers(HttpMethod.GET,"/organizers").permitAll()
+                .antMatchers("/auth/**",  "/refresh", "/register","/uploadFile").permitAll()
+                .antMatchers(HttpMethod.GET,"/login","/peopleAll","/doctorAll").permitAll()
+                .antMatchers(HttpMethod.GET,"/people/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/register").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .antMatchers(HttpMethod.POST,"/event").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/applyPeople","/applyDoctor","/vaccines").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET,"/user","/user/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/comment/**").hasRole("DOCTOR")
+
+
                 .anyRequest()
                 .authenticated();
         http.addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);
