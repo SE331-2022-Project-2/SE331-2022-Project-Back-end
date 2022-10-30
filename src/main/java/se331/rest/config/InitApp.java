@@ -238,7 +238,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         user1.setAdmin(admin);
     }
 
-    User user1, user2, user3, user4, user5;
+    User user1, user2, user4, user5;
     private void addUser() {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         Authority authUser = Authority.builder().name(AuthorityName.ROLE_USER).build();
@@ -262,16 +262,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .lastname("user")
                 .email("enabled@user.com")
                 .enabled(true)
-                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                .build();
-
-        user3 = User.builder()
-                .username("disableUser")
-                .password(encoder.encode("disableUser"))
-                .firstname("disableUser")
-                .lastname("disableUser")
-                .email("disableUser@user.com")
-                .enabled(false)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
 
@@ -303,12 +293,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         user1.getAuthorities().add(authAdmin);
         user2.getAuthorities().add(authUser);
         user2.getAuthorities().add(authPeople);
-        user3.getAuthorities().add(authUser);
         user4.getAuthorities().add(authDoctor);
         user5.getAuthorities().add(authPeople);
         userRepository.save(user1);
         userRepository.save(user2);
-        userRepository.save(user3);
         userRepository.save(user4);
         userRepository.save(user5);
     }
