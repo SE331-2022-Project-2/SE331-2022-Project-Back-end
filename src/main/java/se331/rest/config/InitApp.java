@@ -252,6 +252,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .lastname("admin")
                 .email("admin@admin.com")
                 .enabled(true)
+                .imageUrls("https://securityintelligence.com/wp-content/uploads/2018/08/when-an-it-administrator-leaves-privileged-account-management-can-help.jpg")
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
 
@@ -261,6 +262,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .firstname("user")
                 .lastname("user")
                 .email("enabled@user.com")
+                .imageUrls("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/31149f2bab58419ff1748883e6647dba.jpg?alt=media&token=9e62ae4b-82cc-4678-8ca5-d36e492e5f4b")
                 .enabled(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
@@ -271,6 +273,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .firstname("doctor")
                 .lastname("doctor")
                 .email("enabledDoctor@user.com")
+                .imageUrls("https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg?w=2000")
                 .enabled(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
@@ -281,6 +284,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .firstname("user2")
                 .lastname("user2")
                 .email("enabledDoctor@user.com")
+                .imageUrls("https://firebasestorage.googleapis.com/v0/b/imageupload-69268.appspot.com/o/d4e373b4d88b16004532ee8dab646b4c.jpg?alt=media&token=55a540a7-3932-40b5-b49b-ccc18eaf5297")
                 .enabled(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
