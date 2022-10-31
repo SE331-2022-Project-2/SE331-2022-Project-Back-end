@@ -20,7 +20,7 @@ public class ProjectBackendApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3000")
+                        .allowedOrigins("http://localhost:3000", "http://3.85.67.171:4500")
                         .exposedHeaders("x-total-count");
 
             }
