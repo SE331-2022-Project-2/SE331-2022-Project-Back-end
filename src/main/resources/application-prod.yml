@@ -7,9 +7,17 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: password
-jpa:
-  hibernate:
-    ddl-auto: create
-servlet:
-  multipart:
-    max-file-size: 10MB
+  jpa:
+    hibernate:
+      ddl-auto: create
+  servlet:
+    multipart:
+      max-file-size: 10MB
+jwt:
+  header: Authorization
+  secret: "4t7w!z%C&F)J@NcRfUjXn2r5u8x/A?D(G-KaPdSgVkYp3s6v9y$B&E)H@MbQeThW"
+  expiration: 604800
+  route:
+    authentication:
+      path: auth
+      refresh: refresh
