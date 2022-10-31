@@ -66,7 +66,7 @@ public class WebSecurityConfig {
 
 
 
-    @Bean
+//    @Bean
     ServerHttpSecurity serverHttpSecurity() {
 
         return ServerHttpSecurity.http();
